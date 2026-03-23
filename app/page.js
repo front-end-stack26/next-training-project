@@ -1,13 +1,23 @@
 import Link from 'next/link'
+import Image from 'next/image'
 const Home = () => {
   return (
     <section className='container mx-auto px-4 max-w-2xl py-12'>
-      <h1 className='text-4xl font-bold mb-6'>Next.js Complete course</h1>
-      <ul className='list-disc'>
+      <h1 className='text-4xl font-bold mb-10'>Next.js Complete course</h1>
+      <Image src="data:image/png;base64,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" alt="next-img" width="1000" height="500" />
+      <ul className='list-disc mt-10'>
         <li className='text-red-500 font-bold'><Link href="/basic-routes"> Basic Routes </Link></li>
         <li className='text-red-500 font-bold'><Link href="/nested-routes"> Nested Routes </Link></li>
         <li className='text-red-500 font-bold'><Link href="/dynamic-routes"> Dynamic Routes </Link></li>
         <li className='text-red-500 font-bold'><Link href="/useRouter"> Use Router </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/fonts"> Fonts </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/test-middleware"> Middleware </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/server-data-fetching"> Server DataFetching </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/client-data-fetching"> Client DataFetching </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/no-store"> No store cache </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/force-cache"> Force cache </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/revalidate"> Revalidate </Link></li>
+        <li className='text-red-500 font-bold'><Link href="/suspense"> Suspense </Link></li>
       </ul>
     </section>
   )

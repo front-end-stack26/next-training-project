@@ -17,3 +17,9 @@ const Basicroute = () => {
 }
 
 export default Basicroute
+
+export const generateMetadata = () => {
+    return {
+        title: "Basic Routes - App Router",
+    }
+}
