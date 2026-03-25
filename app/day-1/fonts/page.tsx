@@ -4,10 +4,10 @@ import { Playwrite_DK_Uloopet_Guides } from "next/font/google"
 import { Inter } from "next/font/google"
 
 // Google Fonts
-const OpenSans = Open_Sans({subsets:['latin'], weight:['500']})
-const Roboto = Roboto_Mono({subsets:['latin'], weight: ['500']})
-const PlayWrite = Playwrite_DK_Uloopet_Guides({subsets:['latin'], weight: ['400']})
-const InterFont = Inter({ subsets: ['latin'], weight: ['400', '700'] })
+const OpenSans = Open_Sans({ weight: ['500'], display: 'swap' })
+const Roboto = Roboto_Mono({ weight: ['500'], display: 'swap' })
+const PlayWrite = Playwrite_DK_Uloopet_Guides({ weight: ['400'], display: 'swap' })
+const InterFont = Inter({ weight: ['400', '700'], display: 'swap' })
 
 const Fonts = () => {
   return (

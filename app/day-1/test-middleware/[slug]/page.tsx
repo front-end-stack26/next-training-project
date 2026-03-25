@@ -1,8 +1,14 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-const MiddlewareSlugPage = ({ params }) => {
-  const { slug } = params  
+type MiddlewareSlugPageProps = {
+  params: {
+    slug: string
+  }
+}
+
+const MiddlewareSlugPage = ({ params }: MiddlewareSlugPageProps) => {
+  const { slug } = params
 
   // Simulate different middleware behaviors based on slug
   const middlewareExamples = {
