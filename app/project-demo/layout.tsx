@@ -1,3 +1,5 @@
+import "../globals.css";
+
 import Header from "@/components/Header";
 
 export const metadata = {
@@ -7,13 +9,12 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <Header />
-        <main className="min-h-screen">
-            {children}
-        </main>
-      </body>
-    </html>
+    <>
+      <Header />
+      <main className="min-h-screen">
+        {children}
+      </main>
+      <div id="portal-root" />
+    </>
   );
 }
