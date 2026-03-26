@@ -1,10 +1,8 @@
+
 const Home = () => {
   return (
     <div className="">
-       {/* Featured product carousel */}
-       {/* Banner */}
-       {/* Category  */}
-       {/* Products */}
+home
     </div>
   )
 }

@@ -1,31 +1,18 @@
-import { auth, clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-// import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher([
-    "/project-demo/checkout",
-    "/project-demo/orders",
-    "/project-demo/orders/[id]",
-    "/project-demo/checkout/success",
-]);
+const REDIRECT_PATH = "/day-1/test-middleware/auth";
 
-export default clerkMiddleware(async (auth, req) => {
-    if(isProtectedRoute(req)) await auth.protect();
-});
+export function proxy(request: NextRequest) {
+  // Prevent redirect loops when already at destination.
+  if (request.nextUrl.pathname === REDIRECT_PATH) {
+    return NextResponse.next();
+  }
+
+  const targetUrl = new URL(REDIRECT_PATH, request.url);
+
+  return NextResponse.redirect(targetUrl, 307);
+}
 
 export const config = {
-  matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
-    '/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)',
-    // Always run for API routes
-    '/(api|trpc)(.*)',
-  ],
+  matcher: ["/day-1/test-middleware", "/day-1/test-middleware/:path*"],
 };
-
-
-// export function middleware(request) {
-//     return NextResponse.redirect(new URL('/day-1/test-middleware/auth', request.url))
-// }
-
-// export const config = {
-//     matcher: ["/day-1/test-middleware"],
-// }
