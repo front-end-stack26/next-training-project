@@ -1,4 +1,5 @@
 import { Product } from "@/types/product";
+import { Category } from "@/types/category";
 
 export const products: Product[] = [
   {
@@ -146,8 +147,9 @@ export const products: Product[] = [
   },
 ];
 
-export const categories = [
+export const categories: Category[] = [
   { name: 'All', slug: 'all' },
   { name: 'Shirts', slug: 'shirts' },
   { name: 'Stickers', slug: 'stickers' },
+  { name: 'Accessories', slug: 'accessories' }
 ];
