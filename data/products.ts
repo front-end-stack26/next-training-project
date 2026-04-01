@@ -17,7 +17,7 @@ export const products: Product[] = [
     ],
     category: 'shirts',
     slug: 'acme-circles-tshirt',
-    colors: ['Black', 'White', 'Navy', 'Gray'],
+    colors: ['black', 'white', 'blue', 'gray'],
     sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
     stock: 50,
   },
@@ -35,7 +35,7 @@ export const products: Product[] = [
     ],
     category: 'accessories',
     slug: 'acme-drawstring-bag',
-    colors: ['Black', 'Navy', 'Gray', 'Red'],
+    colors: ['black', 'blue', 'gray', 'red'],
     stock: 30,
   },
   {
@@ -52,7 +52,7 @@ export const products: Product[] = [
     ],
     category: 'accessories',
     slug: 'acme-cup',
-    colors: ['White', 'Black', 'Blue'],
+    colors: ['white', 'black', 'blue'],
     stock: 25,
   },
   {
@@ -70,7 +70,7 @@ export const products: Product[] = [
     ],
     category: 'accessories',
     slug: 'acme-mug',
-    colors: ['White', 'Black', 'Red', 'Blue'],
+    colors: ['white', 'black', 'red', 'blue'],
     stock: 40,
   },
   {
@@ -88,7 +88,7 @@ export const products: Product[] = [
     ],
     category: 'shirts',
     slug: 'acme-hoodie',
-    colors: ['Black', 'Gray', 'Navy', 'Red'],
+    colors: ['black', 'gray', 'blue', 'red'],
     sizes: ['S', 'M', 'L', 'XL', 'XXL'],
     stock: 35,
   },
@@ -106,7 +106,7 @@ export const products: Product[] = [
     ],
     category: 'shirts',
     slug: 'acme-baby-onesie',
-    colors: ['White', 'Pink', 'Blue', 'Yellow'],
+    colors: ['white', 'pink', 'blue', 'yellow'],
     sizes: ['0-3M', '3-6M', '6-12M', '12-18M'],
     stock: 20,
   },
@@ -124,7 +124,7 @@ export const products: Product[] = [
     ],
     category: 'accessories',
     slug: 'acme-baby-cap',
-    colors: ['White', 'Pink', 'Blue', 'Beige'],
+    colors: ['white', 'pink', 'blue', 'beige'],
     sizes: ['Newborn', '0-6M', '6-12M'],
     stock: 15,
   },
@@ -153,3 +153,7 @@ export const categories: Category[] = [
   { name: 'Stickers', slug: 'stickers' },
   { name: 'Accessories', slug: 'accessories' }
 ];
+
+export const getProductBySlug = (slug: string) => {
+  return products.filter(p => p.slug === slug)
+}

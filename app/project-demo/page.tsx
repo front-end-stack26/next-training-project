@@ -3,7 +3,7 @@
 import NavMenu from '@/components/NavMenu';
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
-import ProductCard from '@/components/ProductCard';
+import ProductCard from '@/components/product/ProductCard';
 
 const Home = () => {
   const searchParams = useSearchParams();

@@ -1,7 +1,6 @@
 import { Product } from "@/types/product";
 import Image from "next/image";
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardAction,
@@ -10,6 +9,7 @@ import {
   CardTitle,
   CardFooter
 } from "@/components/ui/card"
+import Link from "next/link"
 
 type ProductCardProps = {
     product: Product;
@@ -37,7 +37,7 @@ const ProductCard = ({product}: ProductCardProps) => {
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button className="w-full bg-transparent font-bold uppercase text-indigo-900 cursor-pointer">Details</Button>
+        <Link href={`/project-demo/product/${product.slug}`} className="w-full flex items-center justify-center bg-transparent font-bold uppercase text-indigo-900 cursor-pointer">Details</Link>
       </CardFooter>
     </Card>
   )
