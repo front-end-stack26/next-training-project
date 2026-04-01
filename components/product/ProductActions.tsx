@@ -9,8 +9,8 @@ import { Product } from "@/types/product";
 
 
 const ProductActions = ({product}: {product: Product[]}) => {
-  const [selectedColor, setSelectedColor] = useState(product[0].colors[0]);
-  const [selectedSize, setSelectedSize] = useState(product[0].sizes[0]); 
+  const [selectedColor, setSelectedColor] = useState(product?.[0]?.colors?.[0] ?? null);
+  const [selectedSize, setSelectedSize] = useState(product?.[0]?.sizes?.[0] ?? null); 
   const [qty, setQty] = useState(1);
 
 
@@ -24,20 +24,20 @@ const ProductActions = ({product}: {product: Product[]}) => {
     
   return (
     <div className="mt-6">
-        <p  className="font-bold text-md py-3">Color: <span className="text-md font-normal ml-2 capitalize">{selectedColor}</span></p>
-        <div className="flex gap-2 mt-2 mb-4">
+        {selectedColor && <p  className="font-bold text-md py-3">Color: <span className="text-md font-normal ml-2 capitalize">{selectedColor}</span></p>}
+        {selectedColor && <div className="flex gap-2 mt-2 mb-4">
             {product[0].colors.map((color, index) => (
                 <button key={index} onClick={() => handleSelectedColor(color)} className={`flex items-center justify-center w-10 h-10 border rounded-full cursor-pointer ${colorMap[color]}`}>
                     {selectedColor === color && <FaCheck />}
                 </button>
             ))}
-        </div>
-        <p className="font-bold text-md py-3">Color: <span className="text-md font-normal ml-2">{selectedSize}</span></p>
-        <div className="flex gap-2 mt-2 mb-4">
+        </div>}
+        {selectedSize && <p className="font-bold text-md py-3">Color: <span className="text-md font-normal ml-2">{selectedSize}</span></p>}
+        {selectedSize && <div className="flex gap-2 mt-2 mb-4">
             {product[0].sizes.map((size, index) => (
                 <button key={index} onClick={() => handleSelectedSize(size)} className={`px-4 py-2 border rounded-md text-sm cursor-pointer ${size === selectedSize ? "bg-black text-white" : ""}`}>{size}</button>
             ))}
-        </div>
+        </div>}
         <p className="font-bold text-md mb-2 py-3">Quantity: <span className="ml-1 mr-2"> ({qty}) </span> | <span className="text-md font-normal ml-2 text-gray-400">{product[0].stock} in stock</span></p>
         <QuantityInput value={qty} onChange={setQty} max={product[0].stock} />
          {/* Add to Cart Section */}
