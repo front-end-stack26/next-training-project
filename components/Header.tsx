@@ -3,7 +3,7 @@
 import React, {useState} from "react";
 import Link from "next/link";
 import { FiShoppingCart , FiMenu, FiX  } from 'react-icons/fi';
-import CartSideBar from "./CartSideBar";
+import CartSideBar from "./portals/CartSideBar";
 
 interface HeaderProps {
     brand?: React.ReactNode;

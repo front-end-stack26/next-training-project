@@ -1,6 +1,9 @@
+"use client"
+import { useState } from "react";
 import { useCartStore } from "@/store/cart-store";
-import Portal from "./Portal";
+import Portal from "../Portal";
 import { FiX } from "react-icons/fi";
+import LoginModal from "./LoginModal";
 
 type CartSideBarProps = {
   isOpen: boolean;
@@ -9,6 +12,7 @@ type CartSideBarProps = {
 
 const CartSideBar = ({ isOpen, onClose }: CartSideBarProps) => {
   const cartItems = useCartStore((state) => state.cart);
+  const [showLogin, setShowLogin] = useState(false);
 
   if (!isOpen) return null;
 
@@ -90,11 +94,14 @@ const CartSideBar = ({ isOpen, onClose }: CartSideBarProps) => {
               w-full py-3 bg-black text-white rounded-lg font-medium 
               hover:bg-gray-900 transition-colors
             "
+            onClick={() => setShowLogin(true)}
           >
             Checkout
           </button>
         </div>
       </div>
+    
+    <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />
     </Portal>
   );
 };
