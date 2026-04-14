@@ -1,7 +1,7 @@
 "use server"
 
 import { z } from "zod";
-import { users } from "@/data/users";
+import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation";
 
 const SignupSchema = z.object({
@@ -14,6 +14,7 @@ const SignupSchema = z.object({
 })
 
 export async function  signupAction(formData: FormData) {
+    const users = await prisma.user.findMany();
     const raw = {
         email: formData.get("email"),
         password: formData.get("password"),
@@ -33,7 +34,7 @@ export async function  signupAction(formData: FormData) {
         return { errors: { email: ["Email already exists"] }}
     }
 
-    users.push({ email, password})
+     const user = await prisma.user.create({data: {email, password}})
 
     console.log("New User Created:", email);
 

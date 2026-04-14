@@ -1,12 +1,14 @@
+"use client"
+
 import { useState } from "react";
 import Portal from "../Portal";
-import { loginAction } from "@/app/actions/login";
-import { FcGoogle } from "react-icons/fc";
+import { FaGithub  } from "react-icons/fa";
+import { signInGithub } from "@/app/actions/auth";
+import router from "next/router";
+import { signin } from '@/app/actions/auth'
 
-const LoginModal = ({isOpen, onClose}) => {
-  const [errors, setErrors] = useState(null);
 
-  
+const LoginModal = ({isOpen, onClose}) => {  
   if (!isOpen) return null;
 
   return (
@@ -23,11 +25,7 @@ const LoginModal = ({isOpen, onClose}) => {
         <div className="bg-white w-96 p-6 rounded-xl shadow-xl relative">
           <h2 className="text-xl font-bold mb-4">Login</h2>
 
-          <form
-            action={async (formData) => {
-              const result = await loginAction(formData);
-              if (result?.errors) setErrors(result.errors);
-            }}
+          <form action={signin}
             className="flex flex-col gap-4"
           >
             <div>
@@ -37,9 +35,9 @@ const LoginModal = ({isOpen, onClose}) => {
                 placeholder="Email"
                 className="w-full border rounded-md px-4 py-2"
               />
-              {errors?.email && (
-                <p className="text-red-500 text-sm">{errors.email[0]}</p>
-              )}
+              {/* {state?.errors?.email && (
+                <p className="text-red-500 text-sm">{state.errors.email[0]}</p>
+              )} */}
             </div>
 
             <div>
@@ -49,9 +47,9 @@ const LoginModal = ({isOpen, onClose}) => {
                 placeholder="Password"
                 className="w-full border rounded-md px-4 py-2"
               />
-              {errors?.password && (
-                <p className="text-red-500 text-sm">{errors.password[0]}</p>
-              )}
+              {/* {state?.errors?.password && (
+                <p className="text-red-500 text-sm">{state.errors.password[0]}</p>
+              )} */}
             </div>
 
             <button
@@ -62,10 +60,17 @@ const LoginModal = ({isOpen, onClose}) => {
             </button>
           </form>
 
-          {/* Google Login */}
-          <button className="w-full mt-4 py-2 border rounded-md flex items-center justify-center gap-2 hover:bg-gray-50">
-            <FcGoogle size={20} /> Login with Google
-          </button>
+          
+          <form action={signInGithub}>
+            <button
+              type="submit"
+              className="w-full mt-4 py-2 border rounded-md flex items-center justify-center gap-2 hover:bg-gray-50"
+            >
+              <FaGithub size={20} />
+              Login with GitHub
+            </button>
+          </form>
+
 
           {/* create an account */}
             <div className="mt-6 text-center text-sm">

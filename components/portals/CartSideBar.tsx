@@ -4,15 +4,18 @@ import { useCartStore } from "@/store/cart-store";
 import Portal from "../Portal";
 import { FiX } from "react-icons/fi";
 import LoginModal from "./LoginModal";
+import { useRouter } from "next/navigation"
 
 type CartSideBarProps = {
   isOpen: boolean;
   onClose: () => void;
+  session: object;
 };
 
-const CartSideBar = ({ isOpen, onClose }: CartSideBarProps) => {
+const CartSideBar = ({ isOpen, onClose, session }: CartSideBarProps) => {
   const cartItems = useCartStore((state) => state.cart);
   const [showLogin, setShowLogin] = useState(false);
+  const router = useRouter();
 
   if (!isOpen) return null;
 
@@ -78,7 +81,7 @@ const CartSideBar = ({ isOpen, onClose }: CartSideBarProps) => {
         </div>
 
         {/* Footer */}
-        <div className="absolute bottom-0 left-0 w-full border-t border-gray-200 p-6 bg-white">
+        {cartItems.length !== 0 && <div className="absolute bottom-0 left-0 w-full border-t border-gray-200 p-6 bg-white">
           <div className="flex items-center justify-between mb-4">
             <span className="text-gray-600 font-medium">Subtotal:</span>
             <span className="text-gray-900 font-bold">
@@ -94,11 +97,20 @@ const CartSideBar = ({ isOpen, onClose }: CartSideBarProps) => {
               w-full py-3 bg-black text-white rounded-lg font-medium 
               hover:bg-gray-900 transition-colors
             "
-            onClick={() => setShowLogin(true)}
+            onClick={() =>{
+              if (session) {
+                  router.push('/project-demo/checkout');
+                  onClose();
+                } else {
+                  setShowLogin(true);
+                }
+              }
+            }
           >
             Checkout
           </button>
-        </div>
+          </div>
+        }
       </div>
     
     <LoginModal isOpen={showLogin} onClose={() => setShowLogin(false)} />

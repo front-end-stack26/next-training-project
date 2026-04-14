@@ -1,6 +1,4 @@
-import "../globals.css";
-
-import Header from "@/components/Header";
+import HeaderWrapper from "@/components/HeaderWrapper";
 
 export const metadata = {
   title: "project-demo",
@@ -10,7 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <>
-      <Header />
+      <HeaderWrapper />
       <main className="min-h-screen">
         {children}
       </main>
