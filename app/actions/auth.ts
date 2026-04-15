@@ -3,8 +3,8 @@
 import { signIn, signOut } from "@/lib/auth"
 
 export async function signInGithub() {
-  await signIn("Github", {
-    redirectTo: "/project-demo/checkout",
+  await signIn("github", {
+    callbackUrl: "/project-demo/checkout",
   })
 }
 

@@ -41,18 +41,21 @@ const Checkout = () => {
                       className="w-full border p-2 rounded"
                       {...register('address')}
                     />
+                    {errors.address && <p className="text-red-500 text-sm my-1 p-4 pt-0">{errors.address.message}</p>}
                     <input
                       name="city"
                       placeholder="City"
                       className="w-full border p-2 rounded"
                       {...register('city')}
                     />
+                    {errors.city && <p className="text-red-500 text-sm my-1 p-4 pt-0">{errors.city.message}</p>}
                     <input
                       name="phone"
                       placeholder="Phone number"
                       className="w-full border p-2 rounded"
                       {...register('phone')}
                     />  
+                    {errors.phone && <p className="text-red-500 text-sm my-1 p-4 pt-0">{errors.phone.message}</p>}
                     <button
                       type="submit"
                       className="w-full py-3 bg-black text-white rounded-lg hover:bg-gray-800 transition"

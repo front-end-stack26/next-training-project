@@ -23,6 +23,10 @@ const Home = () => {
             <h2 className='text-xl font-semibold text-sky-700 mb-2'>Day 3</h2>
             <p className='text-sm text-sky-600'>Server Actions </p>
           </Link>
+          <Link href='/day-4' className='group rounded-xl border border-sky-300 bg-sky-50 hover:bg-sky-100 transition p-6 text-center shadow-sm'>
+            <h2 className='text-xl font-semibold text-sky-700 mb-2'>Day 4</h2>
+            <p className='text-sm text-sky-600'>Authentication with NextAuth v5 </p>
+          </Link>
           <Link href='/project-demo' className='group rounded-xl border border-emerald-300 bg-emerald-50 hover:bg-emerald-100 transition p-6 text-center shadow-sm'>
             <h2 className='text-xl font-semibold text-emerald-700 mb-2'>Project Demo</h2>
             <p className='text-sm text-emerald-600'>Build a practical project using routing and dynamic pages.</p>
